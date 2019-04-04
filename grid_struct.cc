@@ -27,7 +27,7 @@ int main() {
 		for (int j=0;j<NY;++j) {
 			element[i][j].coords.at(0) =x_start+dx*i;
 			element[i][j].coords.at(1)=y_start+dy*j;
-			element[i][j].mass=12;
+			element[i][j].mass=12.;
 			element[i][j].id=k;
 			++k;
 		}
