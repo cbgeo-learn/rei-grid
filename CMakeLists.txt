@@ -36,10 +36,14 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
+# pthreads
+find_package (Threads)
+link_libraries (${CMAKE_THREAD_LIBS_INIT})
 
 # Include directories
 include_directories(BEFORE
   ${poly_SOURCE_DIR}/include/
+  ${poly_SOURCE_DIR}/external/
 )
 
 # poly executable
@@ -53,4 +57,4 @@ add_library(lpoly SHARED ${poly_src})
 
 add_executable(poly ${poly_SOURCE_DIR}/src/main.cc)
 target_link_libraries(poly lpoly)
-
+target_link_libraries(poly pthread)

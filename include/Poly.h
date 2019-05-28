@@ -6,15 +6,15 @@
 
 #include <Eigen/Dense>
 
-
-class Poly {
-protected:
-  std::vector<Eigen::Vector2i> coordlist_;
-  int n_ = coordlist_.size();
-
+class Polygon {
 public:
-  Poly(std::vector<Eigen::Vector2i> coordlist) : coordlist_{coordlist} {}
-  virtual int area() = 0;
+  Polygon(const std::vector<Eigen::Vector2f> &coordlist)
+      : coordlist_{coordlist} {}
+  virtual float area() = 0;
+
+protected:
+  std::vector<Eigen::Vector2f> coordlist_;
+  int n_ = coordlist_.size();
 };
 
-#endif  //POLY_H
+#endif // POLY_H

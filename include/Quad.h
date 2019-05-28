@@ -2,10 +2,14 @@
 #define QUAD_H
 #include "Poly.h"
 
-class Quadrilateral : public Poly {
+class Quadrilateral : public Polygon {
 public:
-  Quadrilateral(std::vector<Eigen::Vector2i> coordlist) : Poly(coordlist) {}
-  int area() override;
+  Quadrilateral(const std::vector<Eigen::Vector2f> &coordlist)
+      : Polygon(coordlist) {}
+  float area() override;
+
+protected:
+  using Polygon::coordlist_;
 };
 
-#endif //QUAD_H
+#endif // QUAD_H

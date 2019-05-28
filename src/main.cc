@@ -1,38 +1,35 @@
-#include <iostream>
-#include <fstream>
 #include "Poly.h"
 #include "Quad.h"
 #include "Tri.h"
+#include "cio.h"
+#include <csv.h>
+#include <fstream>
+#include <iostream>
 
 int main(int argc, char **argv) {
-  std::vector<Eigen::Vector2i> coordlist;
-  Eigen::Vector2i coords;
 
-  std::ifstream coord("coordinates.txt");
-  std::vector<int> v;
-  int j;
-  while (coord >> j) {
-    v.push_back(j);
-  }
-  int n = v.size() / 2;
+  std::vector<Eigen::Vector2f> coordlist;
+  std::string file;
+  std::string shape;
 
-  if (v.size() % 2 != 0) {
-    std::cout << "Incorrect Number of Arguments!" << std::endl;
-    std::abort();
+  if (argc == 3) {
+    file = argv[1];
+    shape = argv[2];
   } else {
-    for (int i = 0; i < n; ++i) {
-      coords(0) = v[2 * i];
-      coords(1) = v[2 * i + 1];
-      coordlist.push_back(coords);
-    }
+    std::cout << "incorrect number of input arguments" << std::endl;
+    std::abort();
   }
 
-  if (n == 4) {
-    Quadrilateral shape(coordlist);
-    std::cout << shape.area() << std::endl;
-  } else if (n == 3) {
-    Triangle shape(coordlist);
-    std::cout << shape.area() << std::endl;
+  coordlist = cio::read_coordinates(file);
+
+  if (shape == "quad") {
+    coordlist.erase(coordlist.begin() + 4, coordlist.end());
+    Quadrilateral quad(coordlist);
+    std::cout << quad.area() << std::endl;
+  } else if (shape == "tri") {
+    coordlist.erase(coordlist.begin() + 3, coordlist.end());
+    Triangle tri(coordlist);
+    std::cout << tri.area() << std::endl;
   } else {
     std::cout << "Shape Not Allowed" << std::endl;
     std::abort();

@@ -2,10 +2,14 @@
 #define TRI_H
 #include "Poly.h"
 
-class Triangle : public Poly {
+class Triangle : public Polygon {
 public:
-  Triangle(std::vector<Eigen::Vector2i> coordlist) : Poly(coordlist) {}
-  int area();
+  Triangle(const std::vector<Eigen::Vector2f> &coordlist)
+      : Polygon(coordlist) {}
+  float area() override;
+
+protected:
+  using Polygon::coordlist_;
 };
 
-#endif //TRI_H
+#endif // TRI_H
