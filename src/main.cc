@@ -22,16 +22,16 @@ int main(int argc, char **argv) {
 
   coordlist = cio::read_coordinates(file);
 
+  Polygon *poly;
   if (shape == "quad") {
     coordlist.erase(coordlist.begin() + 4, coordlist.end());
-    Quadrilateral quad(coordlist);
-    std::cout << quad.area() << std::endl;
+    poly = new Quadrilateral(coordlist);
   } else if (shape == "tri") {
     coordlist.erase(coordlist.begin() + 3, coordlist.end());
-    Triangle tri(coordlist);
-    std::cout << tri.area() << std::endl;
+    poly = new Triangle(coordlist);
   } else {
     std::cout << "Shape Not Allowed" << std::endl;
     std::abort();
   }
+  std::cout << poly->area() << std::endl;
 }
