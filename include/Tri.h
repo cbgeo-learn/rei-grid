@@ -4,12 +4,8 @@
 
 class Triangle : public Polygon {
 public:
-  Triangle(const std::vector<Eigen::Vector2f> &coordlist)
-      : Polygon(coordlist) {}
-  float area() override;
-
-protected:
-  using Polygon::coordlist_;
+  virtual ~Triangle(){};
+  float area(std::vector<Eigen::Vector2f> &coordlist) override;
 };
 
 #endif // TRI_H

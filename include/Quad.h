@@ -4,12 +4,8 @@
 
 class Quadrilateral : public Polygon {
 public:
-  Quadrilateral(const std::vector<Eigen::Vector2f> &coordlist)
-      : Polygon(coordlist) {}
-  float area() override;
-
-protected:
-  using Polygon::coordlist_;
+  virtual ~Quadrilateral(){};
+  float area(std::vector<Eigen::Vector2f> &coordlist) override;
 };
 
 #endif // QUAD_H

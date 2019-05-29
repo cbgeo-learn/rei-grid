@@ -1,11 +1,12 @@
 #include "Quad.h"
 
-float Quadrilateral::area() {
+float Quadrilateral::area(std::vector<Eigen::Vector2f> &coordlist) {
   std::cout << "calculating the area of the quadrilateral" << std::endl;
   float a = 0;
-  for (auto it = coordlist_.begin(); it != coordlist_.end(); ++it) {
-    if (*it == coordlist_.back()) {
-      it[1] = coordlist_.front();
+  coordlist.erase(coordlist.begin() + 4, coordlist.end());
+  for (auto it = coordlist.begin(); it != coordlist.end(); ++it) {
+    if (*it == coordlist.back()) {
+      it[1] = coordlist.front();
     }
     a += it[0](0) * it[1](1) - it[1](0) * it[0](1);
   }

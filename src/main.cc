@@ -1,8 +1,8 @@
 #include "Poly.h"
 #include "Quad.h"
 #include "Tri.h"
+#include "Factory.h"
 #include "cio.h"
-#include <csv.h>
 #include <iostream>
 
 int main(int argc, char **argv) {
@@ -21,17 +21,9 @@ int main(int argc, char **argv) {
 
   coordlist = cio::read_coordinates(file);
 
-  Polygon *poly;
-  if (shape == "quad") {
-    coordlist.erase(coordlist.begin() + 4, coordlist.end());
-    poly = new Quadrilateral(coordlist);
-  } else if (shape == "tri") {
-    coordlist.erase(coordlist.begin() + 3, coordlist.end());
-    poly = new Triangle(coordlist);
-  } else {
-    std::cout << "Shape Not Allowed" << std::endl;
-    std::abort();
-  }
-  std::cout << poly->area() << std::endl;
+  polyFactory *poly_factory = polyFactory::createFactory(shape);
+  Polygon *poly = poly_factory->getShape();
+  std::cout << poly->area(coordlist) << std::endl;
   delete poly;
+  delete poly_factory;
 }
