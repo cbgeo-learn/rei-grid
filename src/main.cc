@@ -3,7 +3,6 @@
 #include "Tri.h"
 #include "cio.h"
 #include <csv.h>
-#include <fstream>
 #include <iostream>
 
 int main(int argc, char **argv) {
@@ -34,4 +33,5 @@ int main(int argc, char **argv) {
     std::abort();
   }
   std::cout << poly->area() << std::endl;
+  delete poly;
 }
