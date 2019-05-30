@@ -22,6 +22,6 @@ int main(int argc, char **argv) {
   coordlist = cio::read_coordinates(file);
 
   std::shared_ptr<polyFactory> poly_factory = polyFactory::createFactory(shape);
-  std::shared_ptr<Polygon> poly = poly_factory->getShape();
-  std::cout << poly->area(coordlist) << std::endl;
+  std::shared_ptr<Polygon> poly = poly_factory->getShape(coordlist);
+  std::cout << poly->area() << std::endl;
 }

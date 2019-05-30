@@ -1,14 +1,14 @@
 #ifndef FACT_H
 #define FACT_H
-#include <memory>
 #include "Poly.h"
 #include "Quad.h"
 #include "Tri.h"
+#include <memory>
 
 class polyFactory {
 public:
   virtual ~polyFactory() {}
-  virtual std::shared_ptr<Polygon> getShape() = 0;
+  virtual std::shared_ptr<Polygon> getShape(std::vector < Eigen::Vector2f>) = 0;
 
   static std::shared_ptr<polyFactory> createFactory(std::string &shape);
 };
@@ -16,13 +16,17 @@ public:
 class quadFactory : public polyFactory {
 public:
   virtual ~quadFactory() {}
-  std::shared_ptr<Polygon> getShape() { return std::make_shared<Quadrilateral>(); }
+  std::shared_ptr<Polygon> getShape(std::vector<Eigen::Vector2f> coordlist) {
+    return std::make_shared<Quadrilateral>(coordlist);
+  }
 };
 
 class triFactory : public polyFactory {
 public:
   virtual ~triFactory() {}
-  std::shared_ptr<Polygon> getShape() { return std::make_shared<Triangle>(); }
+  std::shared_ptr<Polygon> getShape(std::vector<Eigen::Vector2f> coordlist) {
+    return std::make_shared<Triangle>(coordlist);
+  }
 };
 
 std::shared_ptr<polyFactory> polyFactory::createFactory(std::string &shape) {

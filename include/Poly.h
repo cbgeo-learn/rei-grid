@@ -8,8 +8,13 @@
 
 class Polygon {
 public:
+  Polygon(const std::vector<Eigen::Vector2f> &coordlist)
+      : coordlist_{coordlist} {}
   virtual ~Polygon(){};
-  virtual float area(std::vector<Eigen::Vector2f> &coordlist) = 0;
+  virtual float area() = 0;
+
+protected:
+  std::vector<Eigen::Vector2f> coordlist_;
 };
 
 #endif // POLY_H
