@@ -6,30 +6,33 @@
 #include <memory>
 
 class polyFactory {
-public:
+ public:
   virtual ~polyFactory() {}
-  virtual std::shared_ptr<Polygon> getShape(std::vector < Eigen::Vector2f>) = 0;
+  virtual std::shared_ptr<Polygon> getShape(
+      const std::vector<Eigen::Vector2f>& coordlist) = 0;
 
-  static std::shared_ptr<polyFactory> createFactory(std::string &shape);
+  static std::shared_ptr<polyFactory> createFactory(std::string& shape);
 };
 
 class quadFactory : public polyFactory {
-public:
+ public:
   virtual ~quadFactory() {}
-  std::shared_ptr<Polygon> getShape(std::vector<Eigen::Vector2f> coordlist) {
+  std::shared_ptr<Polygon> getShape(
+      const std::vector<Eigen::Vector2f>& coordlist) {
     return std::make_shared<Quadrilateral>(coordlist);
   }
 };
 
 class triFactory : public polyFactory {
-public:
+ public:
   virtual ~triFactory() {}
-  std::shared_ptr<Polygon> getShape(std::vector<Eigen::Vector2f> coordlist) {
+  std::shared_ptr<Polygon> getShape(
+      const std::vector<Eigen::Vector2f>& coordlist) {
     return std::make_shared<Triangle>(coordlist);
   }
 };
 
-std::shared_ptr<polyFactory> polyFactory::createFactory(std::string &shape) {
+std::shared_ptr<polyFactory> polyFactory::createFactory(std::string& shape) {
   if (shape == "quad") {
     return std::make_shared<quadFactory>();
   } else if (shape == "tri") {
@@ -39,4 +42,4 @@ std::shared_ptr<polyFactory> polyFactory::createFactory(std::string &shape) {
     std::exit(EXIT_FAILURE);
   }
 }
-#endif // FACT_H
+#endif  // FACT_H

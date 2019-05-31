@@ -21,5 +21,5 @@ std::vector<Eigen::Vector2f> read_coordinates(std::string file) {
   return coordlist;
 }
 
-} // namespace cio
-#endif // CIO_H
+}  // namespace cio
+#endif  // CIO_H

@@ -1,11 +1,11 @@
+#include "Factory.h"
 #include "Poly.h"
 #include "Quad.h"
 #include "Tri.h"
-#include "Factory.h"
 #include "cio.h"
 #include <iostream>
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
 
   std::vector<Eigen::Vector2f> coordlist;
   std::string file;
