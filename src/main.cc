@@ -19,8 +19,7 @@ int main(int argc, char** argv) {
     std::abort();
   }
  
-  std::shared_ptr<polyFactory> poly_factory = polyFactory::createFactory(shape);
-  std::shared_ptr<Poly> poly = poly_factory->getShape(file);
+  std::shared_ptr<Poly> poly = polyFactory::create(shape,file);
   std::cout << poly->area() << std::endl;
   std::cout << poly->volume() << std::endl;
 }
