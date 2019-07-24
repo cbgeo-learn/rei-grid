@@ -1,4 +1,4 @@
-#include "Quad.h"
+#include "Poly.h"
 
 float Quadrilateral::area() {
   std::cout << "calculating the area of the quadrilateral" << std::endl;

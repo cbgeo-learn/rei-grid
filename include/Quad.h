@@ -2,12 +2,13 @@
 #define QUAD_H
 #include "Poly.h"
 
-class Quadrilateral : public Polygon {
+class Quadrilateral : public Poly {
  public:
-  Quadrilateral(const std::vector<Eigen::Vector2f>& coordlist)
-      : Polygon(coordlist) {}
+  Quadrilateral(const std::string& file)
+      : Poly(file) {}
   virtual ~Quadrilateral(){};
   float area() override;
+  float volume() override;
 };
 
 #endif  // QUAD_H

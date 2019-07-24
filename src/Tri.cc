@@ -14,3 +14,9 @@ float Triangle::area() {
   a = a * 0.5;
   return a;
 }
+
+float Triangle::volume() {
+  std::cout<< "volume is not defined for this shape."<<std::endl;
+  return 0.;
+}
+

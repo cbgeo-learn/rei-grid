@@ -1,15 +1,15 @@
 #include "Factory.h"
+#include "Hex.h"
 #include "Poly.h"
 #include "Quad.h"
 #include "Tri.h"
-#include "cio.h"
 #include <iostream>
 
 int main(int argc, char** argv) {
 
-  std::vector<Eigen::Vector2f> coordlist;
   std::string file;
   std::string shape;
+  int dim;
 
   if (argc == 3) {
     file = argv[1];
@@ -18,10 +18,9 @@ int main(int argc, char** argv) {
     std::cout << "incorrect number of input arguments" << std::endl;
     std::abort();
   }
-
-  coordlist = cio::read_coordinates(file);
-
+ 
   std::shared_ptr<polyFactory> poly_factory = polyFactory::createFactory(shape);
-  std::shared_ptr<Polygon> poly = poly_factory->getShape(coordlist);
+  std::shared_ptr<Poly> poly = poly_factory->getShape(file);
   std::cout << poly->area() << std::endl;
+  std::cout << poly->volume() << std::endl;
 }

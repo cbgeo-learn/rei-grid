@@ -50,6 +50,7 @@ include_directories(BEFORE
 SET(poly_src
   ${poly_SOURCE_DIR}/src/Quad.cc
   ${poly_SOURCE_DIR}/src/Tri.cc
+  ${poly_SOURCE_DIR}/src/Hex.cc
 
 )
 
