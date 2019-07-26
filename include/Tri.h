@@ -4,8 +4,8 @@
 
 class Triangle : public Poly {
  public:
-  Triangle(const std::string& file)
-      : Poly(file) {}
+  Triangle(const std::string& file, int dim)
+      : Poly(file, dim) {}
   virtual ~Triangle(){};
   float area() override;
   float volume() override;

@@ -4,8 +4,8 @@
 
 class Hexahedron : public Poly {
  public:
-  Hexahedron(const std::string& file)
-      : Poly(file) {}
+  Hexahedron(const std::string& file, int dim)
+      : Poly(file, dim) {}
   virtual ~Hexahedron(){};
   float area() override;
   float volume() override;

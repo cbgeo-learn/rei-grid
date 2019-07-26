@@ -4,8 +4,8 @@
 
 class Quadrilateral : public Poly {
  public:
-  Quadrilateral(const std::string& file)
-      : Poly(file) {}
+  Quadrilateral(const std::string& file, int dim)
+      : Poly(file, dim) {}
   virtual ~Quadrilateral(){};
   float area() override;
   float volume() override;
